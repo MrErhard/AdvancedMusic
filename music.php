@@ -34,22 +34,25 @@
             <input type="submit" value="Sort" class="button">
         </form>
 
-        <h1>Music List</h1>
+        <h1>Regions in New Zealand</h1>
 
             <!-- php to display songs -->
             <?php
             require_once 'connect.php';
 
             // Create the database query
-            $sql = "SELECT song.*, artist.*, price * 1.15 as 'gstPrice' FROM song, artist WHERE song.ArtistID = artist.ID";
+            //$sql = "SELECT regions.* FROM regions";
+            $sql = "SELECT Regions.*, nz_islands.* FROM regions, nz_islands  
+            WHERE nz_islands.Island_ID = Regions.Island_ID";
 
-            // Check if there is a sort order requested
-            if(isset($_REQUEST['sort'])){
-                $sql = $sql . " ORDER BY " . $_REQUEST['sort'];
-            } 
-            else {
-                $sql = $sql . " ORDER BY Title";
-            }
+            // // Check if there is a sort order requested
+            // if(isset($_REQUEST['sort'])){
+            //     $sql = $sql . " ORDER BY OrderBy";
+            //     //$sql = $sql . " ORDER BY " . $_REQUEST['sort'];
+            // } 
+            // else {
+            //     $sql = $sql . " ORDER BY OrderBy";
+            // }
 
             $result = $conn->query($sql);
 
@@ -58,16 +61,9 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<article>';
-
-                        echo '<h2>' . $row["Title"] . '</h2>';
+                        echo '<h2>' . $row["RegionName"] . '</h2>';
                         echo '<figure class="centre"><img src="' . $row["Image"] . '" height="150" width="150"></figure>';
-                        echo '<p><span class="title">Artist: </span><span>' . $row["Artist_Name"] . '</span></p>';
-                        echo '<p><span class="title">Genre: </span><span>' . $row["Genre"] . '</span></p>';
-                        echo '<p><span class="title">Rating: </span><span>' . $row["Rating"] . '</span></p>';
-                        echo '<p><span class="title">Year Formed: </span><span>' . $row["year_formed"] . '</span></p>';
-                        echo '<p><span class="title">Origin: </span><span>' . $row["origin_country"] . '</span></p>';
-                        echo '<p><span class="title">Price: </span><span>$' . number_format((float)$row["gstPrice"], 2, '.', '') . '</span></p>';
-
+                        echo '<p><span class="title">Info: </span><span>' . $row["Info"] . '</span></p>';
                     echo '</article>';
                 }
             }

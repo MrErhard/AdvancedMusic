@@ -3,7 +3,7 @@
 $servername = "localhost:3306"; // Check this port is correct
 $username = "root";
 $password = "usbw";
-$dbname = "AdvancedMusic";
+$dbname = "nzwebsite";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
