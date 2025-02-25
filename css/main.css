@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=McLaren|Quicksand|Shadows+Into+Light&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.8.2/css/all.css');
+
+/* Element Rules */
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+}
+h1, h2 { 
+    font-family: 'McLaren', cursive; 
+    color: #280071;
+}
+img {
+    max-width: 75vw;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: #8CE2D0;
+}
+header img{
+    max-width: 100%;
+}
+header figure{
+    max-width: 20%;
+    margin: 1em;
+    margin-left: 2em;
+}
+header h1 { 
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 250%;
+    font-weight: lighter;
+    color: inherit;
+}
+
+nav {
+    display: flex;
+    background-color: #280071;
+    border-top: solid black thin;
+    border-bottom: solid black thin;
+}
+nav p{
+    flex: 1 1 100px;
+    text-align: center;
+
+}
+nav a { 
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+nav a:hover { 
+    text-decoration: none;
+    color: #e91e63;
+    font-weight: bold;
+}
+nav label{
+    display: none;
+}
+footer {
+    background-color: #8CE2D0;
+    border-top: solid black thin;
+    padding: 0.5em;
+}
+
+/* ID Rules */
+#menuItems {
+    display: flex;
+    flex-basis: 100%;
+}
+#musicList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#musicList article {
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background: #eee;
+    margin: 1em;
+    padding: 1em;
+    border: solid black thin;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #777;
+}
+#musicList article h2  {
+    margin: 0;
+}
+#musicList article figure {
+    margin: 1em 0;
+}
+#navCheck{
+    display: none;
+}
+
+/* Class Rules */
+.centre {
+    text-align: center;
+}
+.float {
+    float: right;
+}
+.italics {
+    font-style: italic;
+}
+.listImg{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.main {
+    margin: 1em;
+}
+.small {
+    font-size: smaller;
+}
+.title{
+    color: #13A698;
+    font-weight: bold;
+}
+
+/***** BEGIN FORM STYLING ****/
+/*  Add Music Form */
+.addMusic {
+    font-family: Quicksand;
+    margin: 1em auto;
+    max-width: 40em;
+}
+fieldset {
+    border: none;
+}
+legend {
+    font-size: 120%;
+}
+form label {
+    display: inline-block; /* inline-block is a new property for the learners */
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 0.5em 1em; /* havent seen padding combined this way - only seen all or individual properties*/
+    background: #280071;
+    color: white;
+}
+form input, form select, form option {
+    width: 100%;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    font-family: Quicksand; /* all inputs, have built in font-family. need to override */
+    font-size: 16px; /* inputs have built in size. need to override */
+}
+form .button {
+    background: #280071;
+    color: white;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    transition: background-color 0.5s;
+}
+form .button:hover {
+    cursor: pointer; 
+    animation-name: buttonhover;
+    animation-duration: 1s;
+    background-color: #6638B6;
+    transition: background-color 0.5s;
+}
+
+/* CSS for Star Rating System */
+.rating {
+    background: white;
+    width: 100%;
+    padding: 0;
+}
+.rating input[type="radio"] {
+    /*  
+        Cross browser approach to turning off the radio buttons. 
+        Cant use display: none as it breaks keyboard navigation
+        Can't set size to 0 because this doesnt work in Firefox
+        appearance isnt implemented in the browsers yet, but the 
+        prefixed version is.
+        Appearance allows element to be quickly formatted as another 
+        element: eg a span with an appearance of a button
+        Setting the value to none, turns off all built in styling of 
+        the element
+    */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: auto; /* Reset width of elements from 100% */
+    margin: 0; /* Turn off margins and padding */
+    padding: 0;
+}
+.rating label {
+    display: inline-block; /* Change to inline block so we can apply width and margins */
+    width: 18%; /* Fit 5 on a line */
+    margin-bottom: 0.5em; /* give some room for the hover border to appear */
+    text-align: center;
+    color: #FFD700; /* Make all labels gold */
+    background: white;
+    cursor: pointer; /* New property - change mouse pointer */
+    border-bottom: 2px solid transparent; /* Transparent border-bottom avoids jumping when a colored border is applied on :hover/:focus */
+}
+.rating input:checked ~ label {
+    color: #ddd; /* Change labels after checked input to silver */
+}
+.rating input:checked + label {
+    color: #FFD700; /* But make label next to checked input gold again */
+}
+.rating:hover input + label { 
+    color: #FFD700; /* Change hovered inputs label gold */
+}
+.rating input:hover ~ label,
+.rating input:focus ~ label,
+.rating input[id="star0"] + label {
+    color: #ddd;
+} /* Change all labels after hovered / focused to silver */
+.rating input:hover + label,
+.rating input:focus + label {
+    color: #FFD700;
+    border-bottom-style: dotted;
+    border-bottom-color: #FFD700;
+} /* changed hovered /  focused elements label to gold with border */
+
+/* Music Page Sort Form */
+#sortForm{
+    float: right;
+}
+#sortForm label{
+    display: inline-block;
+    width: 5em;
+    background-color: white;
+}
+#sortForm select{
+    display: inline-block;
+    width: 10em;;
+    background-color: white;
+}
+#sortForm .button {
+    width: 5em;
+}
+/***** END FORM STYLING ****/
+
+
+@media(max-width:640px){
+    header h1 {
+        font-size: 200%;
+    }
+    nav label{
+        display: inline-block;
+        padding: 5px;
+    }
+    nav p{
+        flex-basis: 1em;
+        margin-left: -2em;
+    }
+
+    #menuItems{
+        flex-direction: column;
+        display: none;
+    }
+    #navCheck:checked + #menuItems{
+        display: block;
+    }
+    .fa-bars{
+        color: white;
+        font-size: 2em;
+        float: left;
+    }
+
+}
