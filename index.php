@@ -63,7 +63,7 @@
         </ul>
     </div>
     <footer>
-        <p class="centre">&copy; 2019 YourName.</p>
+        <p class="centre">&copy; 2025 Main.</p>
     </footer>
 </body>
 </html>
