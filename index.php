@@ -63,7 +63,7 @@
         </ul>
     </div>
     <footer>
-        <p class="centre">&copy; 2019 Main.</p>
+        <p class="centre">&copy; 2025 Improvements.</p>
     </footer>
 </body>
 </html>
