@@ -1,0 +1,7 @@
+.backgroundmap {
+    background-image: url('new-zealand-map.jpg');
+    background-size: cover;
+    padding-left: 20px;
+    min-height: 130vh;
+    height: 500px;
+}

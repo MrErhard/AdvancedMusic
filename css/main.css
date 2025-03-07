@@ -13,25 +13,7 @@ h1, h2 {
 img {
     max-width: 75vw;
 }
-header {
-    display: flex;
-    align-items: center;
-    background-color: #8CE2D0;
-}
-header img{
-    max-width: 100%;
-}
-header figure{
-    max-width: 20%;
-    margin: 1em;
-    margin-left: 2em;
-}
-header h1 { 
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 250%;
-    font-weight: lighter;
-    color: inherit;
-}
+
 
 nav {
     display: flex;

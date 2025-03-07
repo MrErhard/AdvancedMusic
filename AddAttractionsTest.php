@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/insertMusic.js"></script> 
+    <title>NZ-Regions Add Attractions</title>
+</head>
+
+<body>
+<?php
+        include_once('header.php')
+    ?> 
+    <nav>
+        <label for= "navCheck"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="navCheck">      
+        <div id="menuItems">
+            <p><a href="index.php">Home</a></p>
+            <p><a href="music.php">Music</a></p>
+            <p><a href="addMusic.php">Add Music</a></p>
+        </div>
+    </nav>
+    <div class="main" role="main">
+        <form class="addMusic" action="insertAttractions.php" method="post" name="insert" onsubmit="return validateForm();">
+            <fieldset id="fields">
+                <legend>New Attraction</legend>
+                <label for="Attraction_NameText">Attraction Name</label>
+                <input name="Attraction_NameText" id="Attraction_NameText" type="text">
+                <label>Region_ID</label>
+                <input name="Region_IDText" id="Region_IDText" type="text">
+                <label>Info</label>
+                <input name="InfoText" id="InfoText" type="text">  
+                <!-- Select Attraction Form -->
+                <label>Attraction Type</label>
+                <form id="sortForm" action="music.php" method="post">
+                    <select name="Attraction_Type_IDText" id="Attraction_Type_IDText">
+                        <option value="1">City</option>
+                        <option value="2">Nature</option>
+                        <option value="3">Sightseeing</option>
+                        <option value="4" selected>Walk</option>
+                    </select>
+                </form>                
+                <!-- <input name="Attraction_Type_IDText" id="Attraction_Type_IDText" type="text">                                                 -->
+                <label>Image</label>
+                <input name="ImageText" id="ImageText" type="text">
+                <label>Order By</label>
+                <input name="OrderByText" id="OrderByText" type="text">
+                <label>Disabled</label>
+                <input name="DisabledText" id="DisabledText" type="text">                
+                <label>Rating</label>
+                <fieldset class="rating" role="radiogroup" id="songRating">
+                    <input value="1" id="star1" type="radio" name="rating" title="1 Star" aria-label="1 Star" >
+                    <label for="star1" title="1 Star" aria-hidden="true"><i class="fas fa-star"></i></label>
+                    <input value="2" id="star2" type="radio" name="rating"  title="2 Stars" aria-label="2 Stars">
+                    <label for="star2" title="2 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
+                    <input value="3" id="star3" type="radio" name="rating" title="3 Stars" aria-label="3 Stars" checked>
+                    <label for="star3" title="3 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
+                    <input value="4" id="star4" type="radio" name="rating" title="4 Stars" aria-label="4 Stars">
+                    <label for="star4" title="4 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
+                    <input value="5" id="star5" type="radio" name="rating" title="5 Stars" aria-label="5 Stars">
+                    <label for="star5" title="5 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
+                </fieldset>
+
+                <select name='artistText' id="artistText">
+                    <!-- php to display artists -->
+                    <?php
+                    require_once 'connect.php';
+
+                    $sql = "SELECT * from attractions";
+
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo'<option value="1">' . $row["Attraction_Name"] . '</option>';
+                        }
+                    }
+                    ?>
+
+                </select>
+
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="Submit Song" class="button">
+                <input type="reset" value="Reset" class="button">
+            </fieldset>
+        </form>
+    </div>
+    <footer>
+        <p class="centre">&copy; 2019 LearnCoach.</p>
+    </footer>
+</body>
+</html>
