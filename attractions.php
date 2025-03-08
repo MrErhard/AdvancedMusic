@@ -59,8 +59,8 @@
             echo '</section>';
             ?>
     </div>
-    <footer>
-        <p class="centre">&copy; 2025 LearnCoach.</p>
-    </footer>
+    <?php
+        include_once('footer.php')
+    ?> 
 </body>
 </html>
