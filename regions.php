@@ -10,15 +10,6 @@
     <?php
         include_once('header.php')
     ?> 
-    <nav>
-        <label for="navCheck"><i class="fas fa-bars"></i></label>
-        <input type="checkbox" id="navCheck">         
-        <div id="menuItems">
-            <p><a href="index.php">Home</a></p>
-            <p><a href="music.php">Music</a></p>
-            <p><a href="addMusic.php">Add Music</a></p>
-        </div>
-    </nav>
     <div class="main" role="main">
         <!-- Sort Form -->
         <form id="sortForm" action="music.php" method="post">
@@ -58,7 +49,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<article>';
-                        echo '<h2>' . $row["RegionName"] . '</h2>';
+                        echo '<h2>' . $row["Region_Name"] . '</h2>';
                         echo '<figure class="centre"><img src="' . $row["Image"] . '" height="150" width="150"></figure>';
                         echo '<p><span class="title">Info: </span><span>' . $row["Info"] . '</span></p>';
                     echo '</article>';
@@ -72,3 +63,4 @@
     </footer>
 </body>
 </html>
+

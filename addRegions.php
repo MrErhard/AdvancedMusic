@@ -13,29 +13,14 @@
         include_once('header.php')
     ?> 
     <div class="main" role="main">
-        <form class="addMusic" action="insertRegions.php" method="post" name="insert" onsubmit="return validateForm();">
+        <form class="addRegions" action="insertRegions.php" method="post" name="insert" onsubmit="return validateForm();">
             <fieldset id="fields">
                 <legend>New Region</legend>
                 <label for="titleText">Name</label>
                 <input name="titleText" id="Region_NameText" type="text">
                 <label>Island</label>
-                <select name='artistText' id="Island_ID">
+                <input name="Island_IDNumber" id="Island_IDNumber" type="number" step="any">
 
-                    <!-- php to display the lookup table name nz_Islands -->
-                    <?php
-                    require_once 'connect.php';
-
-                    $sql = "SELECT * from nz_islands";
-
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo'<option value="1">' . $row["Name"] . '</option>';
-                        }
-                    }
-                    ?>
-                </select>
                 <label>Info</label>
                 <input name="infoText" id="InfoText" type="text">
                 <label>Image</label>
@@ -50,9 +35,11 @@
                 <input type="reset" value="Reset" class="button">
             </fieldset>
         </form>
+
     </div>
-    <footer>
-        <p class="centre">&copy; 2019 LearnCoach.</p>
-    </footer>
+    <br>
+    <?php
+        include_once('footer.php')
+    ?> 
 </body>
 </html>

@@ -24,8 +24,9 @@ header h1 {
     <input type="checkbox" id="navCheck">         
     <div id="menuItems">
         <p><a href="index.php">Home</a></p>
-        <p><a href="music.php">Music</a></p>
-        <p><a href="addMusic.php">Add Music</a></p>
+        <p><a href="regions.php">Regions</a></p>
+        <p><a href="attractions.php">Attractions</a></p>
+        <p><a href="addRegions.php">Add Regions</a></p>
         <p><a href="addAttractions.php">Add Attractions</a></p>
         <p><a href="addAttractionsTest.php">Test Attractions</a></p>
     </div>

@@ -15,8 +15,8 @@
         <div class="backgroundmap">
         </div>
     </div>
-    <footer>
-        <p class="centre">&copy; 2025 Improvements.</p>
-    </footer>
+    <?php
+        include_once('footer.php')
+    ?> 
 </body>
 </html>
