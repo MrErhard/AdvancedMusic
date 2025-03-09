@@ -28,7 +28,6 @@ header h1 {
         <p><a href="attractions.php">Attractions</a></p>
         <p><a href="addRegions.php">Add Regions</a></p>
         <p><a href="addAttractions.php">Add Attractions</a></p>
-        <p><a href="addAttractionsTest.php">Test Attractions</a></p>
     </div>
 </nav>
 

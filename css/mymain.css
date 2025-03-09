@@ -5,3 +5,54 @@
     min-height: 130vh;
     height: 500px;
 }
+
+.grid-item:hover img {
+    transform: scale(1.2);
+}
+.grid-container {
+    background-color: aquamarine;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Four equal columns */
+    gap: 15px; /* Gap between the grid */
+}
+
+/* Style for each grid item */
+.grid-item {
+    border: 1px solid #0a0a0a; /* Fixed typo "slid" to "solid" */
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.grid-item h1 {
+    color: #890c0c; /* Fixed missing # */
+    font-size: 100%;
+    font-family: Didot;
+}
+
+.grid-item p {
+    color: #ffffff;
+    font-size: 50px; /* Added px */
+    font-family: Calibri;
+}
+
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr; /* Change to a two-column layout */
+    }
+}
+
+/* Media query for screens smaller than 800px */
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Change to a single-column layout */
+    }
+}

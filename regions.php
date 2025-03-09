@@ -23,7 +23,6 @@
         </form>
 
         <h1>Regions in New Zealand</h1>
-
             <!-- php to display songs -->
             <?php
             require_once 'connect.php';
