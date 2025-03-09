@@ -4,17 +4,15 @@
     /*<input> field values are being read and assign to $variables.*/
     /*E.g. Input field with ID name Region_Name_Text is assign to variable name $region_Name */
     /*Follow the same naming convention and the job is easy*/
-    $region_Name = $_REQUEST['Region_NameText'];
-    $island_ID = $_REQUEST['Island_IDNumber'];
+    $regions_Name = $_REQUEST['Regions_NameText'];
+    $nz_islands_ID = $_REQUEST['NZ_Islands_IDNumber'];
     $info = $_REQUEST['InfoText'];
     $image = $_REQUEST['ImageText'];
     $orderBy = $_REQUEST['OrderByText'];
     $disabled = $_REQUEST['DisabledText'];
 
-    $sql = "INSERT INTO regions (Region_Name, Island_ID, Info, Image, OrderBy, Disabled) 
-        VALUES ('$region_Name', '$island_ID', '$info', '$image', '$orderBy', '$disabled')";
-    $sql = "INSERT INTO regions (Region_Name, Island_ID, Info, Image, OrderBy, Disabled) 
-        VALUES ('aaa', '1', 'info', 'image', '1', '0')";
+    $sql = "INSERT INTO regions (Regions_Name, NZ_Islands_ID, Info, Image, OrderBy, Disabled) 
+        VALUES ('$regions_Name', '$nz_islands_ID', '$info', '$image', '$orderBy', '$disabled')";
     if($conn->query($sql) === TRUE){
         echo "New record created successfully";
     }
