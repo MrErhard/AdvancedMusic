@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/insertMusic.js"></script> 
-    <title>Digital Media. Advanced Websites</title>
+    <!--There is a script in js folder, that does the validation of the data input -->
+    <script src="js/insertRegions.js"></script> 
+    <title>NZ Regions - Add Region</title>
 </head>
 
 <body>
+    <!--For details on the header, see file header.php -->
     <?php
         include_once('header.php')
     ?> 
@@ -17,18 +19,30 @@
             <fieldset id="fields">
                 <legend>New Region</legend>
                 <label for="titleText">Name</label>
-                <input name="titleText" id="Region_NameText" type="text">
+                <input name="Regions_NameText" id="Regions_NameText" type="text">
                 <label>Island</label>
-                <input name="Island_IDNumber" id="Island_IDNumber" type="number" step="any">
+                <select name='NZ_Islands_IDNumber' id="NZ_Islands_IDNumber">
+                    <?php
+                    require_once 'connect.php';
 
+                    $sql = "SELECT nz_islands_ID, nz_islands_Name FROM nz_islands";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<option value="' . $row["nz_islands_ID"] . '">' . $row["nz_islands_Name"] . '</option>';
+                        }
+                    }
+                    ?>
+                </select> 
                 <label>Info</label>
-                <input name="infoText" id="InfoText" type="text">
+                <input name="InfoText" id="InfoText" type="text">
                 <label>Image</label>
-                <input name="imageText" id="ImageText" type="text">
+                <input name="ImageText" id="ImageText" type="text">
                 <label>Order by</label>
-                <input name="orderByText" id="OrderByText" type="number" step="any">
+                <input name="OrderByText" id="OrderByText" type="number" step="any">
                 <label>Disabled</label>
-                <input name="disabledText" id="DisabledText" type="number" step="any">            
+                <input name="DisabledText" id="DisabledText" type="number" step="any">            
             </fieldset>
             <fieldset>
                 <input type="submit" value="Submit Region" class="button">
