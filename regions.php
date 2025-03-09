@@ -31,7 +31,7 @@
             // Create the database query
             //$sql = "SELECT regions.* FROM regions";
             $sql = "SELECT Regions.*, nz_islands.* FROM regions, nz_islands  
-            WHERE nz_islands.Island_ID = Regions.Island_ID";
+            WHERE nz_islands.NZ_Islands_ID = Regions.NZ_Islands_ID";
 
             // // Check if there is a sort order requested
             // if(isset($_REQUEST['sort'])){
@@ -49,7 +49,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<article>';
-                        echo '<h2>' . $row["Region_Name"] . '</h2>';
+                        echo '<h2>' . $row["Regions_Name"] . '</h2>';
                         echo '<figure class="centre"><img src="' . $row["Image"] . '" height="150" width="150"></figure>';
                         echo '<p><span class="title">Info: </span><span>' . $row["Info"] . '</span></p>';
                     echo '</article>';
