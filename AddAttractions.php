@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/insertMusic.js"></script> 
+    <script src="js/insertAttractions.js"></script> 
     <title>NZ-Regions Add Attractions</title>
 </head>
 
@@ -12,74 +12,60 @@
 <?php
         include_once('header.php')
     ?> 
-    <nav>
-        <label for= "navCheck"><i class="fas fa-bars"></i></label>
-        <input type="checkbox" id="navCheck">      
-        <div id="menuItems">
-            <p><a href="index.php">Home</a></p>
-            <p><a href="music.php">Music</a></p>
-            <p><a href="addMusic.php">Add Music</a></p>
-        </div>
-    </nav>
     <div class="main" role="main">
         <form class="addMusic" action="insertAttractions.php" method="post" name="insert" onsubmit="return validateForm();">
             <fieldset id="fields">
                 <legend>New Attraction</legend>
-                <label for="Attraction_NameText">Attraction Name</label>
-                <input name="Attraction_NameText" id="Attraction_NameText" type="text">
+                <label for="Attractions_NameText">Attraction Name</label>
+                <input name="Attractions_NameText" id="Attractions_NameText" type="text">
                 <label>Region_ID</label>
-                <input name="Region_IDText" id="Region_IDText" type="text">
-                <label>Info</label>
-                <input name="InfoText" id="InfoText" type="text">  
-                <label>Attraction_Type_ID</label>
-                <input name="Attraction_Type_IDText" id="Attraction_Type_IDText" type="text">                                                
-                <label>Image</label>
-                <input name="ImageText" id="ImageText" type="text">
-                <label>Order By</label>
-                <input name="OrderByText" id="OrderByText" type="text">
-                <label>Disabled</label>
-                <input name="DisabledText" id="DisabledText" type="text">                
-                <!-- <label>Rating</label>
-                <fieldset class="rating" role="radiogroup" id="songRating">
-                    <input value="1" id="star1" type="radio" name="rating" title="1 Star" aria-label="1 Star" >
-                    <label for="star1" title="1 Star" aria-hidden="true"><i class="fas fa-star"></i></label>
-                    <input value="2" id="star2" type="radio" name="rating"  title="2 Stars" aria-label="2 Stars">
-                    <label for="star2" title="2 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
-                    <input value="3" id="star3" type="radio" name="rating" title="3 Stars" aria-label="3 Stars" checked>
-                    <label for="star3" title="3 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
-                    <input value="4" id="star4" type="radio" name="rating" title="4 Stars" aria-label="4 Stars">
-                    <label for="star4" title="4 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
-                    <input value="5" id="star5" type="radio" name="rating" title="5 Stars" aria-label="5 Stars">
-                    <label for="star5" title="5 Stars" aria-hidden="true"><i class="fas fa-star"></i></label>
-                </fieldset> -->
-
-                <select name='artistText' id="artistText">
-                    <!-- php to display artists -->
+                <select name='Regions_IDNumber' id="Regions_IDNumber">
                     <?php
                     require_once 'connect.php';
 
-                    $sql = "SELECT * from attractions";
-
+                    $sql = "SELECT Regions_ID, Regions_Name FROM Regions";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo'<option value="1">' . $row["Attraction_Name"] . '</option>';
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<option value="' . $row["Regions_ID"] . '">' . $row["Regions_Name"] . '</option>';
                         }
                     }
                     ?>
+                </select>                
+              
+                <label>Info</label>
+                <input name="InfoText" id="InfoText" type="text">  
+                <label>Attraction_Type_ID</label>
+                <select name='Attractions_Type_IDNumber' id="Attractions_Type_IDNumber">
+                    <?php
+                    require_once 'connect.php';
 
-                </select>
+                    $sql = "SELECT Attractions_Type_ID, Attractions_Type_Name FROM Attractions_Type";
+                    $result = $conn->query($sql);
 
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<option value="' . $row["Attractions_Type_ID"] . '">' . $row["Attractions_Type_Name"] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>                                                              
+                <label>Image</label>
+                <input name="ImageText" id="ImageText" type="text">
+                <label>Order By</label>
+                <input name="OrderByNumber" id="OrderByNumber" type="number" step="any">
+                <label>Disabled</label>
+                <input name="DisabledNumber" id="DisabledNumber" type="number" step="any">                
             </fieldset>
             <fieldset>
-                <input type="submit" value="Submit Song" class="button">
+                <input type="submit" value="Submit Attraction" class="button">
                 <input type="reset" value="Reset" class="button">
             </fieldset>
         </form>
     </div>
     <footer>
-        <p class="centre">&copy; 2019 LearnCoach.</p>
+        <p class="centre">&copy; 2025 Improvements.</p>
     </footer>
 </body>
 </html>
