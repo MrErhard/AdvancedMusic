@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <title>Digital Media. Advanced Websites</title>
-</head>   
-    <?php
+</head>   <?php
         include_once('header.php')
     ?> 
 <body>
@@ -26,7 +25,7 @@
         <h1>Regions in New Zealand</h1>
             <!-- php to display songs -->
             <?php
-            require_once 'myconnect.php';
+            require_once 'connect.php';
 
             // Create the database query
             $sql = "SELECT regions.* FROM regions";
@@ -42,7 +41,7 @@
 
             $result = $conn->query($sql);
 
-            echo '<section id="musicList">';
+            echo '<section id="regionList">';
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
