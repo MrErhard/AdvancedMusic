@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'connect.php';
+    require_once 'myconnect.php';
 
     $attractions_Name = $_REQUEST['Attractions_NameText'];
     $regions_ID = $_REQUEST['Regions_IDNumber'];

@@ -21,7 +21,7 @@
                 <label>Region_ID</label>
                 <select name='Regions_IDNumber' id="Regions_IDNumber">
                     <?php
-                    require_once 'connect.php';
+                    require_once 'myconnect.php';
 
                     $sql = "SELECT Regions_ID, Regions_Name FROM Regions";
                     $result = $conn->query($sql);
@@ -39,7 +39,7 @@
                 <label>Attraction_Type_ID</label>
                 <select name='Attractions_Type_IDNumber' id="Attractions_Type_IDNumber">
                     <?php
-                    require_once 'connect.php';
+                    require_once 'myconnect.php';
 
                     $sql = "SELECT Attractions_Type_ID, Attractions_Type_Name FROM Attractions_Type";
                     $result = $conn->query($sql);
@@ -52,7 +52,7 @@
                     ?>
                 </select>                                                              
                 <label>Image</label>
-                <input name="ImageText" id="ImageText" type="text">
+                <input name="ImageText" id="ImageText" type="text" value="images_attractions/">
                 <label>Order By</label>
                 <input name="OrderByNumber" id="OrderByNumber" type="number" step="any">
                 <label>Disabled</label>

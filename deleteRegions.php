@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +16,11 @@
         include_once('header.php')
     ?> 
     <div class="main" role="main">
-        <form class="addRegions" action="insertRegions.php" method="post" name="insert" onsubmit="return validateForm();">
+        <form class="addRegions" action="updateRegion.php" method="post" name="insert" onsubmit="return validateForm();">
             <fieldset id="fields">
                 <legend>New Region</legend>
                 <label for="titleText">Name</label>
-                <input name="Regions_NameText" id="Regions_NameText" type="text">
+                <input name="Regions_NameText" id="Regions_NameText" type="text" aria-label="Title Input for New Region" value="<?php echo $original_row['Region_Name'] ?>">
                 <label>Island</label>
                 <select name='NZ_Islands_IDNumber' id="NZ_Islands_IDNumber">
                     <?php
@@ -36,16 +37,18 @@
                     ?>
                 </select>                   
                 <label>Info</label>
-                <input name="InfoText" id="InfoText" type="text">
+                <input name="InfoText" id="InfoText" type="text" aria-label="Information for text" value="<?php echo $original_row['InfoText'] ?>">
                 <label>Image</label>
-                <input name="ImageText" id="ImageText" type="text">
+                <input name="ImageText" id="ImageText" type="text" aria-label="Title Input for New Image" value="<?php echo $original_row['Image'] ?>">
                 <label>Order by</label>
                 <input name="OrderByText" id="OrderByText" type="number" step="any">
-                <label>Disabled</label>
-                <input name="DisabledText" id="DisabledText" type="number" step="any">                   
+                <input name="OrderByText" id="OrderByText" type="number" step="any" aria-label="Order by" value="<?php echo $original_row['OrderByText'] ?>">
+                <label>Disabled</label>             
+                <input name="DisabledText" id="DisabledText" type="number" step="any" aria-label="Disabled info" value="<?php echo $original_row['DisabledText'] ?>">
+                <input name="idText" id="idText" type="hidden" value="<?php echo $original_row['Region_ID'] ?>">
             </fieldset>
             <fieldset>
-                <input type="submit" value="Submit Region" class="button">
+                <input type="submit" value="Edit Region" class="button">
                 <input type="reset" value="Reset" class="button">
             </fieldset>
         </form>

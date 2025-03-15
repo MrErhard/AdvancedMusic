@@ -50,6 +50,8 @@
                         echo '<h2>' . $row["Regions_Name"] . '</h2>';
                         echo '<figure class="centre"><img src="' . $row["Image"] . '" height="150" width="150"></figure>';
                         echo '<p><span class="title">Info: </span><span>' . $row["Info"] . '</span></p>';
+                        echo '<input type="button" value="edit" onclick="location.href=`editRegions.php?id=' . $row["Regions_ID"] . '`;">';
+                        echo '<input type="button" value="delete" onclick="location.href=`deleteRegions.php?id=' . $row["Regions_ID"] . '`;">';
                     echo '</article>';
                 }
             }
