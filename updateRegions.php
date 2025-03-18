@@ -12,7 +12,7 @@
     $orderBy = $_REQUEST['OrderByText'];
     $disabled = $_REQUEST['DisabledText'];
 
-    $sql = "Update regions set Regions_Name = '" . $regions_Name . "', nz_islands_ID = " . $nz_islands_ID .
+    $sql = "Update regions set Regions_Name = '" . $regions_Name . "', NZ_Islands_ID = " . $nz_islands_ID .
     ", Info = '" . $info . "', Image = '" . $image . "', OrderBy = " . $orderBy . ", Disabled = " . $disabled . 
     " Where Regions_ID = " . $regions_ID;
     echo "SQL: " . $sql;

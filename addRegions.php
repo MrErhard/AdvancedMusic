@@ -40,7 +40,7 @@
                 <label>Image</label>
                 <input name="ImageText" id="ImageText" type="text">
                 <label>Order by</label>
-                <input name="OrderByText" id="OrderByText" type="number" step="any">
+                <input name="OrderByText" id="OrderByText" type="text">
                 <label>Disabled</label>
                 <input name="DisabledText" id="DisabledText" type="number" step="any">                   
             </fieldset>

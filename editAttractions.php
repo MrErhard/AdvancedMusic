@@ -1,9 +1,7 @@
 <?php
     require_once 'myconnect.php';
-    //here the code get the unique id passed to the page via the URL.
     $id = isset($_GET['id']) ? $_GET['id'] : 'No ID provided';
-    //Now the query returns the record of the regions with the Regions_ID = id
-    $sql = "SELECT regions.* FROM regions where Regions_ID = " . $id;
+    $sql = "SELECT Attractions.* FROM Attractions where Attractions_ID = " . $id;
     $result = $conn->query($sql);
     $original_row = $result->fetch_assoc();
 ?>
@@ -15,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <!--There is a script in js folder, that does the validation of the data input -->
-    <script src="js/insertRegions.js"></script> 
-    <title>NZ Regions - Add Region</title>
+    <script src="js/insertAttractions.js"></script> 
+    <title>NZ Attractions - Edit Attraction</title>
 </head>
 
 <body>
@@ -25,29 +23,42 @@
         include_once('header.php');
     ?> 
     <div class="main" role="main">
-        <form class="addRegions" action="updateRegions.php" method="post" name="insert" onsubmit="return validateForm();">
+        <form class="addAttractions" action="updateAttractions.php" method="post" name="insert" onsubmit="return validateForm();">
             <fieldset id="fields">
-                <legend>New Region</legend>
+                <legend>Attraction</legend>
                 <label for="titleText">Name</label>
-                <input name="Regions_NameText" id="Regions_NameText" type="text" aria-label="Title Input for New Region" value="<?php echo $original_row['Regions_Name'] ?>">
-                <label>Island</label>
-                <label for="titleText">Name</label>
-                <select name='NZ_Islands_IDNumber' id="NZ_Islands_IDNumber">
+                <input name="Attractions_NameText" id="Attractions_NameText" type="text" aria-label="Title Input for New Region" value="<?php echo $original_row['Attractions_Name'] ?>">
+                <label>Region</label>
+                <select name='Regions_IDNumber' id="Regions_IDNumber">
                     <?php
                     require_once 'myconnect.php';
 
-                    $sql = "SELECT nz_islands_ID, nz_islands_Name FROM nz_islands";
+                    $sql = "SELECT regions_ID, regions_Name FROM regions";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            // Correctly compare nz_islands_ID with the saved NZ_Islands_ID
-                            $selected = ($row["nz_islands_ID"] == $original_row['NZ_Islands_ID']) ? "selected" : "";
-                            echo '<option value="' . $row["nz_islands_ID"] . '" ' . $selected . '>' . $row["nz_islands_Name"] . '</option>';
+                            echo '<option value="' . $row["regions_ID"] . '">' . $row["regions_Name"] . '</option>';
                         }
                     }
                     ?>
-                </select>            
+                </select>                   
+                <label>Attraction Type</label>
+                <select name='Attractions_type_IDNumber' id="Attractions_type_IDNumber">
+                    <?php
+                    require_once 'myconnect.php';
+
+                    $sql = "SELECT attractions_type_ID, attractions_type_Name FROM attractions_type";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<option value="' . $row["attractions_type_ID"] . '">' . $row["attractions_type_Name"] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>                        
+                
                 <label>Info</label>
                 <input name="InfoText" id="InfoText" type="text" aria-label="Information for text" value="<?php echo $original_row['Info'] ?>">
                 <label>Image</label>
@@ -56,10 +67,10 @@
                 <input name="OrderByText" id="OrderByText" type="number" step="any" aria-label="Order by" value="<?php echo $original_row['OrderBy'] ?>">
                 <label>Disabled</label>             
                 <input name="DisabledText" id="DisabledText" type="number" step="any" aria-label="Disabled info" value="<?php echo $original_row['Disabled'] ?>">
-                <input name="idText" id="idText" type="hidden" value="<?php echo $original_row['Regions_ID'] ?>">
+                <input name="idText" id="idText" type="hidden" value="<?php echo $original_row['Attractions_ID'] ?>">
             </fieldset>
             <fieldset>
-                <input type="submit" value="Edit Region" class="button">
+                <input type="submit" value="Edit Attraction" class="button">
                 <input type="reset" value="Reset" class="button">
             </fieldset>
         </form>
